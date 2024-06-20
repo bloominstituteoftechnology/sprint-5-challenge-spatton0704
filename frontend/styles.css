@@ -1,0 +1,104 @@
+/* ❗ DO NOT CHANGE THIS FILE */
+/* ❗ DO NOT CHANGE THIS FILE */
+/* ❗ DO NOT CHANGE THIS FILE */
+@font-face {
+  font-family: 'Titillium Web';
+  src: url('./TitilliumWeb.ttf');
+}
+
+body {
+  font-family: 'Titillium Web', sans-serif;
+  border: 1rem solid #ff4b00;
+}
+
+body,
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1,
+h2 {
+  margin-bottom: 1.2rem;
+}
+
+h4 {
+  margin-top: 0.4rem;
+  cursor: pointer;
+}
+
+header {
+  padding: 1rem;
+  text-align: center;
+}
+
+header .info {
+  font-size: 1.3rem;
+  font-style: italic;
+}
+
+section {
+  width: 100%;
+  overflow-y: auto;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+}
+
+.card {
+  color: gray;
+  padding: 1rem;
+  opacity: 0.6;
+  margin: 0.8rem;
+  border: 1px solid rgb(93, 93, 93);
+  border-radius: 5px;
+  background-color: rgba(233, 223, 230, 0.75);
+  transition: background-color 0.3s ease;
+}
+
+.card:first-child {
+  margin-top: 2rem;
+}
+
+.card ul {
+  list-style-type: square;
+  padding-top: 0.4rem;
+}
+
+.card h3 {
+  font-size: 1em;
+  transition: font-size 0.1s ease;
+  margin-bottom: 0.8rem;
+}
+
+.card h4.closed~ul {
+  display: none;
+}
+
+.card.selected {
+  color: black;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.card.selected h3 {
+  transition: font-size 0.1s ease;
+  font-size: 1.07em;
+}
+
+.card h4.closed::before {
+  content: '▶ ';
+}
+
+.card h4.open::before {
+  content: '▼ ';
+}
+
+.card.selected h4.closed::before,
+.card.selected h4.open::before {
+  color: #00808c;
+}
+
+footer {
+  padding: 1rem;
+}
