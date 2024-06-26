@@ -483,7 +483,7 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
       }
     })
 }
-{
+
   const footer = document.querySelector('footer')
   const currentYear = new Date().getFullYear()
   footer.textContent = `© BLOOM INSTITUTE OF TECHNOLOGY ${currentYear}`
