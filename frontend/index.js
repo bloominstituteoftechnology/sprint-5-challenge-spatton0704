@@ -105,7 +105,7 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
   }
 ];
 
-  let learners = [{
+  let learners = [ {
     id: 6,
     fullName: "Bob Johnson",
     email: "bob.johnson@example.com",
@@ -202,7 +202,7 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
     mentors: [63, 71]
   }
 ];
-
+}
 
   // 👆 ==================== TASK 1 END ====================== 👆
 
@@ -434,10 +434,10 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
       mentorItem.classList.add('mentor-name');
       mentorItem.textContent = mentor;
       mentorsList.appendChild(mentorItem);
-    }
+    
     card.appendChild(mentorsList);
-  }
-}
+  
+
     // 👆 ==================== TASK 3 END ====================== 👆
 
     // 👆 WORK ONLY ABOVE THIS LINE 👆
@@ -482,7 +482,7 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
         }
       }
     })
-
+  }
   const footer = document.querySelector('footer')
   const currentYear = new Date().getFullYear()
   footer.textContent = `© BLOOM INSTITUTE OF TECHNOLOGY ${currentYear}`
