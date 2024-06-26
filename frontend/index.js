@@ -437,7 +437,7 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
     }
     card.appendChild(mentorsList);
   }
-
+}
     // 👆 ==================== TASK 3 END ====================== 👆
 
     // 👆 WORK ONLY ABOVE THIS LINE 👆
