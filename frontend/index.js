@@ -220,177 +220,106 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
   //     "Grace Hopper"
   //   ]`
   // }
-  const combinedData = {
+  let learners = [ {
+    id: 6,
+    fullName: "Bob Johnson",
+    email: "bob.johnson@example.com",
     mentors: [
-      { id: 12, firstName: "Ada", lastName: "Lovelace" },
-      { id: 78, firstName: "Bill", lastName: "Gates" },
-      { id: 63, firstName: "Brendan", lastName: "Eich" },
-      { id: 42, firstName: "Brian", lastName: "Kernighan" },
-      { id: 94, firstName: "Dan", lastName: "Ingalls" },
-      { id: 17, firstName: "Grace", lastName: "Hopper" },
-      { id: 7, firstName: "Guido", lastName: "van Rossum" },
-      { id: 83, firstName: "James", lastName: "Gosling" },
-      { id: 51, firstName: "Linus", lastName: "Torvalds" },
-      { id: 67, firstName: "Margaret", lastName: "Hamilton" },
-      { id: 60, firstName: "Mark", lastName: "Zuckerberg" },
-      { id: 25, firstName: "Martin", lastName: "Fowler" },
-      { id: 88, firstName: "Mary", lastName: "Shaw" },
-      { id: 71, firstName: "Mitchell", lastName: "Hashimoto" },
-      { id: 95, firstName: "Rasmus", lastName: "Lerdorf" },
-      { id: 14, firstName: "Robert", lastName: "Martin" },
-      { id: 32, firstName: "Sergey", lastName: "Brin" },
-      { id: 49, firstName: "Sheryl", lastName: "Sandberg" },
-      { id: 58, firstName: "Yukihiro", lastName: "Matsumoto" }
-    ],
-    learners: [
-      {
-        id: 6,
-        fullName: "Bob Johnson",
-        email: "bob.johnson@example.com",
-        mentors: [
-          combinedData.mentors.find(mentor => mentor.id === 78),
-          combinedData.mentors.find(mentor => mentor.id === 17)
-        ]
-      },
-      {
-        id: 52,
-        fullName: "Samantha Richards",
-        email: "samantha.richards@example.com",
-        mentors: [
-          combinedData.mentors.find(mentor => mentor.id === 12),
-          combinedData.mentors.find(mentor => mentor.id === 83)
-        ]
-      },
-      {
-        id: 84,
-        fullName: "Harry Potter",
-        email: "harry.potter@example.com",
-        mentors: [
-          combinedData.mentors.find(mentor => mentor.id === 71),
-          combinedData.mentors.find(mentor => mentor.id === 95)
-        ]
-      },
-      {
-        id: 18,
-        fullName: "Gina Smith",
-        email: "gina.smith@example.com",
-        mentors: [
-          combinedData.mentors.find(mentor => mentor.id === 32)
-        ]
-      },
-      {
-        id: 77,
-        fullName: "Max Power",
-        email: "max.power@example.com",
-        mentors: [
-          combinedData.mentors.find(mentor => mentor.id === 51),
-          combinedData.mentors.find(mentor => mentor.id === 94)
-        ]
-      },
-      {
-        id: 68,
-        fullName: "Daisy Duke",
-        email: "daisy.duke@example.com",
-        mentors: [
-          combinedData.mentors.find(mentor => mentor.id === 58),
-          combinedData.mentors.find(mentor => mentor.id === 83),
-          combinedData.mentors.find(mentor => mentor.id === 49)
-        ]
-      },
-      {
-        id: 1,
-        fullName: "Jack Sparrow",
-        email: "jack.sparrow@example.com",
-        mentors: [
-          combinedData.mentors.find(mentor => mentor.id === 12),
-          combinedData.mentors.find(mentor => mentor.id === 67)
-        ]
-      },
-      {
-        id: 48,
-        fullName: "Homer Simpson",
-        email: "homer.simpson@example.com",
-        mentors: [
-          combinedData.mentors.find(mentor => mentor.id === 42)
-        ]
-      },
-      {
-        id: 97,
-        fullName: "Luna Lovegood",
-        email: "luna.lovegood@example.com",
-        mentors: [
-          combinedData.mentors.find(mentor => mentor.id === 12),
-          combinedData.mentors.find(mentor => mentor.id === 17),
-          combinedData.mentors.find(mentor => mentor.id === 25),
-          combinedData.mentors.find(mentor => mentor.id === 58)
-        ]
-      },
-      {
-        id: 3,
-        fullName: "Joe Bloggs",
-        email: "joe.bloggs@example.com",
-        mentors: [
-          combinedData.mentors.find(mentor => mentor.id === 83)
-        ]
-      },
-      {
-        id: 35,
-        fullName: "Bilbo Baggins",
-        email: "bilbo.baggins@example.com",
-        mentors: [
-          combinedData.mentors.find(mentor => mentor.id === 51),
-          combinedData.mentors.find(mentor => mentor.id === 60),
-          combinedData.mentors.find(mentor => mentor.id === 95)
-        ]
-      },
-      {
-        id: 29,
-        fullName: "Marge Simpson",
-        email: "marge.simpson@example.com",
-        mentors: [
-          combinedData.mentors.find(mentor => mentor.id === 78),
-          combinedData.mentors.find(mentor => mentor.id === 14)
-        ]
-      },
-      {
-        id: 8,
-        fullName: "Peter Parker",
-        email: "peter.parker@example.com",
-        mentors: [
-          combinedData.mentors.find(mentor => mentor.id === 51),
-          combinedData.mentors.find(mentor => mentor.id === 83),
-          combinedData.mentors.find(mentor => mentor.id === 88)
-        ]
-      },
-      {
-        id: 57,
-        fullName: "Betty Boop",
-        email: "betty.boop@example.com",
-        mentors: [
-          combinedData.mentors.find(mentor => mentor.id === 17),
-          combinedData.mentors.find(mentor => mentor.id === 71),
-          combinedData.mentors.find(mentor => mentor.id === 42)
-        ]
-      },
-      {
-        id: 22,
-        fullName: "Mickey Mouse",
-        email: "mickey.mouse@example.com",
-        mentors: [
-          combinedData.mentors.find(mentor => mentor.id === 83)
-        ]
-      },
-      {
-        id: 91,
-        fullName: "Daffy Duck",
-        email: "daffy.duck@example.com",
-        mentors: [
-          combinedData.mentors.find(mentor => mentor.id === 63),
-          combinedData.mentors.find(mentor => mentor.id === 71)
-        ]
-      }
+      "Bill Gates", "Grace Hopper"
     ]
-  };
+  },
+  {
+    id: 52,
+    fullName: "Samantha Richards",
+    email: "samantha.richards@example.com",
+    mentors: ["Ada Lovelace", "James Goslung"]
+  },
+  {
+    id: 84,
+    fullName: "Harry Potter",
+    email: "harry.potter@example.com",
+    mentors: ["MItchell Hashimoto", "Rasmus Lerdorf"]
+  },
+  {
+    id: 18,
+    fullName: "Gina Smith",
+    email: "gina.smith@example.com",
+    mentors: ["Sergey Brin"]
+  },
+  {
+    id: 77,
+    fullName: "Max Power",
+    email: "max.power@example.com",
+    mentors: ["Linus Torvalds", "Dan Ingalls"]
+  },
+  {
+    id: 68,
+    fullName: "Daisy Duke",
+    email: "daisy.duke@example.com",
+    mentors: ["Yukihoro Matsumoto", "James Gosling", "Sheryl Sandberg"]
+  },
+  {
+    id: 1,
+    fullName: "Jack Sparrow",
+    email: "jack.sparrow@example.com",
+    mentors: ["Ada Lovelace", "Margaret Hamilton"]
+  },
+  {
+    id: 48,
+    fullName: "Homer Simpson",
+    email: "homer.simpson@example.com",
+    mentors: ["Brian Kernighan"]
+  },
+  {
+    id: 97,
+    fullName: "Luna Lovegood",
+    email: "luna.lovegood@example.com",
+    mentors: ["Ada Lovelace", "Grace Hopper", "Martin Fowler", "Yukihiro Matsumoto"]
+  },
+  {
+    id: 3,
+    fullName: "Joe Bloggs",
+    email: "joe.bloggs@example.com",
+    mentors: ["James Gosling"]
+  },
+  {
+    id: 35,
+    fullName: "Bilbo Baggins",
+    email: "bilbo.baggins@example.com",
+    mentors: ["Linus Torvalds", "Mark Zuckerberg", "Rasmus Lerdorf"]
+  },
+  {
+    id: 29,
+    fullName: "Marge Simpson",
+    email: "marge.simpson@example.com",
+    mentors: ["Bill Gates", "Robert Martin"]
+  },
+  {
+    id: 8,
+    fullName: "Peter Parker",
+    email: "peter.parker@example.com",
+    mentors: ["Linus Torvalds", "James Gosling", "Mary Shaw"]
+  },
+  {
+    id: 57,
+    fullName: "Betty Boop",
+    email: "betty.boop@example.com",
+    mentors: ["Grace Hopper", "Mitchell Hashimoto", "Brian Kernighan"]
+  },
+  {
+    id: 22,
+    fullName: "Mickey Mouse",
+    email: "mickey.mouse@example.com",
+    mentors: ["James Gosling"]
+  },
+  {
+    id: 91,
+    fullName: "Daffy Duck",
+    email: "daffy.duck@example.com",
+    mentors: ["Brendan Eich", "Mitchell Hashimoto"]
+  }
+];
+
   // 👆 ==================== TASK 2 END ====================== 👆
 
   const cardsContainer = document.querySelector('.cards')
