@@ -9,15 +9,17 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
     // ❗ Use the variables `mentors` and `learners` to store the data.
     // ❗ Use the await keyword when using axios.
   
-    let mentors, learners;
-  try {
-    const mentorsResponse = await axios.get('http://localhost:3003/api/mentors');
-    const learnersResponse = await axios.get('http://localhost:3003/api/learners');
-    mentors = mentorsResponse.data;
-    learners = learnersResponse.data;
+ let mentors, learners; 
+
+    try {
+      const mentorsResponse = await axios.get('http://localhost:3003/api/mentors');
+      const learnersResponse = await axios.get('http://localhost:3003/api/learners');
+      mentors = mentorsResponse.data;
+      learners = learnersResponse.data;
   } catch (error) {
-    console.error("Error fetching data: ", error);
+      console.error("Error fetching data: ", error);
   }
+
 
     // 👆 ==================== TASK 1 END ====================== 👆
   
@@ -35,116 +37,27 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
     //     "Grace Hopper"
     //   ]`
     // }
-    let learners = [ {
-      id: 6,
-      fullName: "Bob Johnson",
-      email: "bob.johnson@example.com",
-      mentors: [
-        "Bill Gates", "Grace Hopper"
-      ]
-    },
-    {
-      id: 52,
-      fullName: "Samantha Richards",
-      email: "samantha.richards@example.com",
-      mentors: ["Ada Lovelace", "James Goslung"]
-    },
-    {
-      id: 84,
-      fullName: "Harry Potter",
-      email: "harry.potter@example.com",
-      mentors: ["MItchell Hashimoto", "Rasmus Lerdorf"]
-    },
-    {
-      id: 18,
-      fullName: "Gina Smith",
-      email: "gina.smith@example.com",
-      mentors: ["Sergey Brin"]
-    },
-    {
-      id: 77,
-      fullName: "Max Power",
-      email: "max.power@example.com",
-      mentors: ["Linus Torvalds", "Dan Ingalls"]
-    },
-    {
-      id: 68,
-      fullName: "Daisy Duke",
-      email: "daisy.duke@example.com",
-      mentors: ["Yukihoro Matsumoto", "James Gosling", "Sheryl Sandberg"]
-    },
-    {
-      id: 1,
-      fullName: "Jack Sparrow",
-      email: "jack.sparrow@example.com",
-      mentors: ["Ada Lovelace", "Margaret Hamilton"]
-    },
-    {
-      id: 48,
-      fullName: "Homer Simpson",
-      email: "homer.simpson@example.com",
-      mentors: ["Brian Kernighan"]
-    },
-    {
-      id: 97,
-      fullName: "Luna Lovegood",
-      email: "luna.lovegood@example.com",
-      mentors: ["Ada Lovelace", "Grace Hopper", "Martin Fowler", "Yukihiro Matsumoto"]
-    },
-    {
-      id: 3,
-      fullName: "Joe Bloggs",
-      email: "joe.bloggs@example.com",
-      mentors: ["James Gosling"]
-    },
-    {
-      id: 35,
-      fullName: "Bilbo Baggins",
-      email: "bilbo.baggins@example.com",
-      mentors: ["Linus Torvalds", "Mark Zuckerberg", "Rasmus Lerdorf"]
-    },
-    {
-      id: 29,
-      fullName: "Marge Simpson",
-      email: "marge.simpson@example.com",
-      mentors: ["Bill Gates", "Robert Martin"]
-    },
-    {
-      id: 8,
-      fullName: "Peter Parker",
-      email: "peter.parker@example.com",
-      mentors: ["Linus Torvalds", "James Gosling", "Mary Shaw"]
-    },
-    {
-      id: 57,
-      fullName: "Betty Boop",
-      email: "betty.boop@example.com",
-      mentors: ["Grace Hopper", "Mitchell Hashimoto", "Brian Kernighan"]
-    },
-    {
-      id: 22,
-      fullName: "Mickey Mouse",
-      email: "mickey.mouse@example.com",
-      mentors: ["James Gosling"]
-    },
-    {
-      id: 91,
-      fullName: "Daffy Duck",
-      email: "daffy.duck@example.com",
-      mentors: ["Brendan Eich", "Mitchell Hashimoto"]
-    }
-  ];
+    const mentorMap = mentors.reduce((map, mentor) => {
+      map[mentor.id] = mentor.name;
+      return map;
+  }, {});
+
   
+  learners = learners.map(learner => ({
+      ...learner,
+      mentors: learner.mentors.map(mentorId => mentorMap[mentorId])
+  }));
+
+
     // 👆 ==================== TASK 2 END ====================== 👆
   
-    const cardsContainer = document.querySelector('.cards')
-    const info = document.querySelector('.info')
-    info.textContent = 'No learner is selected'
-  
+    const cardsContainer = document.querySelector('.cards');
+    const info = document.querySelector('.info');
+    info.textContent = 'No learner is selected';
   
     // 👇 ==================== TASK 3 START ==================== 👇
   
-    for (let learner of learners) { // looping over each learner object
+    for (let learner of learners) { 
   
       // 🧠 Flesh out the elements that describe each learner
       // ❗ Give the elements below their (initial) classes, textContent and proper nesting.
@@ -155,33 +68,31 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
   
       const card = document.createElement('div');
       card.classList.add('learner-card');
-    
+
       const heading = document.createElement('h3');
       heading.classList.add('learner-name');
-      heading.textContent = learner.name;
+      heading.textContent = learner.fullName;
       card.appendChild(heading);
-    
+
       const email = document.createElement('div');
       email.classList.add('learner-email');
       email.textContent = learner.email;
       card.appendChild(email);
-    
+
       const mentorsHeading = document.createElement('h4');
       mentorsHeading.classList.add('mentors-heading');
       mentorsHeading.textContent = 'Mentors:';
       card.appendChild(mentorsHeading);
-    
+
       const mentorsList = document.createElement('ul');
       mentorsList.classList.add('mentor-list');
       for (let mentor of learner.mentors) {
-        const mentorItem = document.createElement('li');
-        mentorItem.classList.add('mentor-name');
-        mentorItem.textContent = mentor;
-        mentorsList.appendChild(mentorItem);
+          const mentorItem = document.createElement('li');
+          mentorItem.classList.add('mentor-name');
+          mentorItem.textContent = mentor;
+          mentorsList.appendChild(mentorItem);
       }
-      card.appendChild(mentorsList);
     
-  
       // 👆 ==================== TASK 3 END ====================== 👆
   
       // 👆 WORK ONLY ABOVE THIS LINE 👆
@@ -193,26 +104,26 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
   
       card.addEventListener('click', evt => {
         const mentorsHeading = card.querySelector('h4')
-        // critical booleans
+        
         const didClickTheMentors = evt.target === mentorsHeading
         const isCardSelected = card.classList.contains('selected')
-        // do a reset of all learner names, selected statuses, info message
+        
         document.querySelectorAll('.card').forEach(crd => {
           crd.classList.remove('selected')
           crd.querySelector('h3').textContent = crd.dataset.fullName
         })
         info.textContent = 'No learner is selected'
-        // conditional logic
+        
         if (!didClickTheMentors) {
-          // easy case, no mentor involvement
+          
           if (!isCardSelected) {
-            // selecting the card:
+            
             card.classList.add('selected')
             heading.textContent += `, ID ${learner.id}`
             info.textContent = `The selected learner is ${learner.fullName}`
           }
         } else {
-          // clicked on mentors, we toggle and select no matter what
+          
           card.classList.add('selected')
           if (mentorsHeading.classList.contains('open')) {
             mentorsHeading.classList.replace('open', 'closed')
@@ -220,7 +131,7 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
             mentorsHeading.classList.replace('closed', 'open')
           }
           if (!isCardSelected) {
-            // if card was not selected adjust texts
+            
             heading.textContent += `, ID ${learner.id}`
             info.textContent = `The selected learner is ${learner.fullName}`
           }
@@ -230,8 +141,9 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
     const footer = document.querySelector('footer')
     const currentYear = new Date().getFullYear()
     footer.textContent = `© BLOOM INSTITUTE OF TECHNOLOGY ${currentYear}`
-  }
+  
   
   // ❗ DO NOT CHANGE THIS CODE. WORK ONLY INSIDE TASKS 1, 2, 3
   if (typeof module !== 'undefined' && module.exports) module.exports = { sprintChallenge5 }
   else sprintChallenge5()
+}
