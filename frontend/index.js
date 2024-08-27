@@ -1,4 +1,3 @@
-
 async function sprintChallenge5() { // Note the async keyword so you can use `await` inside sprintChallenge5
     // 👇 WORK ONLY BELOW THIS LINE 👇
     // 👇 WORK ONLY BELOW THIS LINE 👇
@@ -9,7 +8,9 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
     // 🧠 Use Axios to GET learners and mentors.
     // ❗ Use the variables `mentors` and `learners` to store the data.
     // ❗ Use the await keyword when using axios.
-  
+
+    const axios = require("axios")
+
  let mentors, learners; 
 
     try {
@@ -143,7 +144,7 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
     const currentYear = new Date().getFullYear()
     footer.textContent = `© BLOOM INSTITUTE OF TECHNOLOGY ${currentYear}`
   
-}
+  }
   // ❗ DO NOT CHANGE THIS CODE. WORK ONLY INSIDE TASKS 1, 2, 3
   if (typeof module !== 'undefined' && module.exports) module.exports = { sprintChallenge5 }
   else sprintChallenge5()
